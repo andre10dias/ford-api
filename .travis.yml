@@ -1,6 +1,10 @@
 language: node_js
 node_js:
 - 16
+branches: 
+  only: 
+    - main
+    - /v\d+\.\d+[a-z]/
 addons:
   apt:
     sources:
@@ -9,7 +13,7 @@ addons:
     - sqlite3
 sudo: false
 before_script:
-- npm install -g mocha
+    - npm install -g mocha
 script:
 - npm test
 deploy:
@@ -21,4 +25,4 @@ deploy:
   edge: true
   on: 
     tags: true
-    branch: main
+    all_branches: true
